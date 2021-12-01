@@ -1,4 +1,4 @@
-package com.example.waves
+package com.example.waves.mvvm
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.ViewModelProvider
+import com.example.waves.R
+import com.example.waves.Success
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class Activity : AppCompatActivity() {
 
