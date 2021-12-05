@@ -2,9 +2,8 @@ package com.example.waves.mvvm
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.waves.CheckUser
 
-class ViewModel : ViewModel(){
+class ViewModel : ViewModel() {
     private val model: CheckUser = Model()
 
     val isDataCorrect = MutableLiveData<Boolean>()
