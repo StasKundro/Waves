@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/textView_success"
-        android:text="Success"
+        android:text="@string/success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"

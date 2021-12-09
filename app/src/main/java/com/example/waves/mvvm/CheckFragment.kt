@@ -53,7 +53,7 @@ class CheckFragment : Fragment() {
             if (it) {
                 (requireContext() as MainActivity).openFragment(Success())
             } else {
-                Toast.makeText(requireContext(), "Something is wrong", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Something wrong", Toast.LENGTH_LONG).show()
             }
         }
     }

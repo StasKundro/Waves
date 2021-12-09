@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Waves</string>
+
+    <string name="name">Имя</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="confirm_password">Повтор пароля</string>
+    <string name="sign_up">Войти</string>
+
+    <string name="success">Успех</string>
+
+    <string name="something_is_wrong">Что-то не так</string>
+</resources>
