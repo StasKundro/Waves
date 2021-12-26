@@ -76,6 +76,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_save_credentials"
+            android:text="Save info"
+            android:textSize="16sp"
+            android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_sign_up"
             android:layout_width="match_parent"
@@ -84,7 +92,6 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
             app:backgroundTint="@android:color/darker_gray" />
-
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

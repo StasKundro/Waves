@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.waves.ui.music.MusicFragment
 import com.example.waves.MainActivity
 import com.example.waves.R
+import com.example.waves.model.storage.AppPreferences
 
 
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -31,12 +32,16 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel.setSharedPreferences(AppPreferences.getInstance(requireContext()))
+        viewModel.fetchStoredData()
+
 
         button_sign_up.setOnClickListener {
             needToOpenMusicFragment = true
-            viewModel.checkValues(editText_name.text.toString(), editText_email.text.toString(), editText_password.text.toString(), editText_confirm_password.text.toString())
+            viewModel.checkValues(editText_name.text.toString(), editText_email.text.toString(), editText_password.text.toString(), editText_confirm_password.text.toString(), checkbox_save_credentials.isChecked)
         }
         subscribeOnLiveData()
+        initListeners()
     }
     private fun subscribeOnLiveData() {
         viewModel.isDataCorrect.observe(viewLifecycleOwner) {
@@ -52,6 +57,24 @@ class MainFragment : Fragment() {
                 }
                 needToOpenMusicFragment = false
             }
+        }
+        viewModel.saveCredentialsCheckedLiveData.observe(viewLifecycleOwner){
+            checkbox_save_credentials.isChecked = it
+        }
+        viewModel.loginLiveData.observe(viewLifecycleOwner){
+            editText_name.setText(it)
+        }
+        viewModel.emailLiveData.observe(viewLifecycleOwner){
+            editText_email.setText(it)
+        }
+        viewModel.passwordLiveData.observe(viewLifecycleOwner){
+            editText_password.setText(it)
+            editText_confirm_password.setText(it)
+        }
+    }
+    private fun initListeners(){
+        checkbox_save_credentials.setOnCheckedChangeListener { _, selected ->
+            viewModel.setSaveCredentialsSelected(selected)
         }
     }
 }

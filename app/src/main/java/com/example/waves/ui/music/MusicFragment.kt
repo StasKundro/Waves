@@ -37,5 +37,4 @@ class MusicFragment: Fragment() {
             adapter.notifyDataSetChanged()
         }
     }
-
 }
