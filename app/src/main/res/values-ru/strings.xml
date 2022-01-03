@@ -11,6 +11,7 @@
 
     <string name="something_is_wrong">Что-то не так</string>
 
-    <string name="your_favour">Ваше любимое</string>
+    <string name="your_favour">Топ альбомов</string>
+    <string name="top_artists">Топ исполнителей</string>
 
 </resources>

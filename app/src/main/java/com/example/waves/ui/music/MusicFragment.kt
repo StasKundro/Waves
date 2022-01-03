@@ -6,13 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.waves.R
-import com.example.waves.model.album.Album
+import com.example.waves.model.music.artists.Artist
+import com.example.waves.model.music.artists.LastFMNetwork
+import com.example.waves.model.music.artists.LastFMNetworkImpl
 import kotlinx.android.synthetic.main.fragment_music.view_albums
 
 class MusicFragment: Fragment() {
     private val viewModel = MusicViewModel()
-    private lateinit var adapter: AlbumAdapter
-    private var albums = mutableListOf<Album>()
+    private lateinit var adapter: ArtistAdapter
+    private var artists = mutableListOf<Artist>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,17 +26,23 @@ class MusicFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = AlbumAdapter(albums)
+        adapter = ArtistAdapter(artists)
         view_albums.adapter = adapter
 
-        viewModel.getAlbums()
+        val lastFMNetwork = LastFMNetworkImpl.getInstance() as LastFMNetwork
+        viewModel.setArtistsService(lastFMNetwork.getArtistsService())
+        lifecycle.addObserver(viewModel)
+
+//        viewModel.getAlbums()
 
         subscribeOnLiveData()
     }
     private fun subscribeOnLiveData(){
-        viewModel.albumsLiveData.observe(viewLifecycleOwner){
-            albums.addAll(it)
+        viewModel.artistsLiveData.observe(viewLifecycleOwner){
+            artists.clear()
+            artists.addAll(it)
             adapter.notifyDataSetChanged()
         }
     }
+
 }
